@@ -1,0 +1,12 @@
+.ordered-item {
+  background-color: #f8f9fa;
+  padding: 10px;
+}
+
+.nav-item a {
+  color: #fff;
+  position: relative;
+  top: 3px;
+  font-size: 15px;
+  text-transform: uppercase;
+}

@@ -1,0 +1,43 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
+}
+
+.table {
+  margin-bottom: 20px;
+}
+
+.btn {
+  margin-right: 10px;
+}
+
+.nav-item a {
+  color: #fff;
+  position: relative;
+  top: 3px;
+  font-size: 15px;
+  text-transform: uppercase;
+}
+
+
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  background: #60a3bc !important;
+}
+.card {
+  background: #afbfd8;
+  border-radius: 5px;
+}
+
+.navbar {
+  margin-bottom: 30px;
+}
+
+.navbar-brand {
+  font-size: 28px;
+  font-weight: bold;
+}
+

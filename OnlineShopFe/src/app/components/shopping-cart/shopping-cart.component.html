@@ -1,0 +1,59 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#">My App</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login" *ngIf="!isUserLoggedIn()">Login</a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/orders" *ngIf="isUserLoggedIn()">Order History </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link"   routerLink="/login" *ngIf="isUserLoggedIn()">Logout</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<div class="container">
+  <h2 class="my-4">Shopping Cart</h2>
+  <table class="table table-striped">
+    <thead>
+    <tr>
+      <th>Item Name</th>
+      <th>Quantity</th>
+      <th>Price</th>
+      <th>Total</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let item of items">
+      <td>{{ item.name }}</td>
+      <select [(ngModel)]="item.quantity" (change)="updateQuantity(item)">
+        <option [value]="i" [selected]="item.quantity === i" *ngFor="let i of quantityOptions">{{ i }}</option>
+      </select>
+      <td>{{ item.price }}</td>
+      <td>{{ item.quantity * item.price }}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td><strong>Total:</strong></td>
+      <td>{{ getTotal() }}</td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="d-flex justify-content-between">
+    <button class="btn btn-primary" routerLink="/home">Continue Shopping</button>
+    <button class="btn btn-danger" (click)="onClearShoppingCart()" routerLink="/home">Clear</button>
+    <button class="btn btn-success" (click)="onCheckout()"  routerLink="/home">Checkout</button>
+  </div>
+</div>

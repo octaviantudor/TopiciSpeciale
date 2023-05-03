@@ -1,0 +1,10 @@
+server:
+  port: ${ITEMS_SERVICE_PORT:8081}
+spring:
+  datasource:
+    url: ${ITEMS_DB_URL:jdbc:mysql://localhost:3306/items_database}
+    username: ${ITEMS_DB_USERNAME:root}
+    password: ${ITEMS_DB_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: update

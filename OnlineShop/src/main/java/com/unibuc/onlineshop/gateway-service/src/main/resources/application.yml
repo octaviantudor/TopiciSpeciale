@@ -1,0 +1,48 @@
+server:
+  port: ${GATEWAY_SERVICE_PORT:8080}
+
+spring:
+  datasource:
+    url: ${GATEWAY_DB_URL:jdbc:mysql://localhost:3306/gateway_database}
+    username: ${GATEWAY_DB_USERNAME:root}
+    password: ${GATEWAY_DB_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: validate
+
+config:
+  service:
+    itemService:
+      host: ${ITEM_SERVICE_HOST:http://localhost:8081}
+      endpoints:
+        items: "/items"
+        categories: "/items/categories"
+        singleItem: "/items/{itemId}"
+        updateItem: "/items/update"
+        reviewsEndpoint: "/items/{itemId}/reviews"
+    orderService:
+      host: ${ORDER_SERVICE_HOST:http://localhost:8082}
+      endpoints:
+        orders: "/orders"
+        orderedItems: "/orders/ordered-items"
+        done: "/orders/{orderId}/done"
+    shoppingCartService:
+      host: ${SHOPPING_CART_SERVICE_HOST:http://localhost:8083}
+      endpoints:
+        shoppingCart: "/shopping-cart"
+        shoppingCartItems: "/shopping-cart/items/{userId}"
+        clearShoppingCart: "/shopping-cart/clear/{userId}"
+
+
+
+jwt:
+  issuer: auth
+  access-expiration-in-ms: 18000000
+  alias: prgxKey
+  certificate: prgxKey.jks
+  store-password: prgxpass
+  key-password: prgxpass
+  secret: 68?Rctu2?_p}Hh8}&=|j!dSVh,en).=SQA6&U+BSx/Fhs84kdg5.V'y;G8Es.9S8NH9Th}~8Bd4yc_Mi
+
+
+

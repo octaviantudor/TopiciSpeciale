@@ -1,0 +1,23 @@
+version: '3.4'
+
+services:
+  gateway-service:
+    image: octaviantudor/gateway-service
+    networks:
+      - online-shop-network
+    ports:
+      - 80:8080
+    environment:
+      - ITEM_SERVICE_HOST=items-service
+      - ORDER_SERVICE_HOST=orders-service
+      - SHOPPING_CART_SERVICE_HOST=shopping-cart-service
+
+  database:
+    image: mysql:8
+    networks:
+      - online-shop-network
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+
+networks:
+  online-shop-network:
